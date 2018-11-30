@@ -6,8 +6,8 @@
  */
 
 require('./bootstrap');
-
 window.Vue = require('vue');
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -20,6 +20,11 @@ Vue.component('flash', require('./components/flash.vue'));
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('chat-app', require('./components/chatapp.vue'));
+Vue.component('user-not', require('./components/usernot.vue'));
+// Vue.component('requestbook', require('./components/requestbook.vue'));
+import InstantSearch from 'vue-instantsearch';
+
+Vue.use(InstantSearch);
 
 const app = new Vue({
     el: '#app'

@@ -11,6 +11,13 @@ use App\Events\NewMessage;
 
 class ContactsController extends Controller
 {
+
+
+    public function index(){
+
+
+         return view('messages.message');
+    }
     public function get(){
 
         //get all the users expet the auth one

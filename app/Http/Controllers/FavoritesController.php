@@ -16,7 +16,7 @@ public function store(reply $reply){
 
         $reply->favorite();
 
-        return back();
+        return back()->with('flash','You Favorited the reply');
 
 }
 }

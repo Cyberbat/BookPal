@@ -7,13 +7,14 @@
  			
 			<div class="profimage">
 
-				<img :src="contact.profile_image" :alt="contact.name">
+				<img v-bind:src="'/storage/' + contact.avatar_path"  :alt="contact.name" width="50px" height="40px">
+
+
 
 			</div>
 
 			<div class="contact">
 			<p class="name">{{contact.name}} </p>
-			<p class="email">{{contact.email}} </p>
             <span class="unread" v-if="contact.unread">{{contact.unread }}</span>
 
 			</div>
@@ -85,17 +86,17 @@
     flex: 1;
     max-height: 600px;
     overflow: scroll;
-    border-left: 1px solid #a6a6a6;
+    border-left: 1px  #a6a6a6;
     
     ul {
         list-style-type: none;
         padding-left: 0;
         li {
             display: flex-left;
+                margin: 12px;
             padding: 2px;
-            border-bottom: 1px solid #aaaaaa;
-            height: 80px;
-            position: relative;
+              height: 93px;
+            position: center;
             cursor: pointer;
             &.selected {
                 background: #dfdfdf;
@@ -137,6 +138,8 @@
                     margin: 0;
                     &.name {
                         font-weight: bold;
+                        font-size:15px;
+                            margin-left: 62px;
                     }
                 }
             }

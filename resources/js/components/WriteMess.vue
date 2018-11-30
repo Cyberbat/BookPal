@@ -2,7 +2,7 @@
 	
 <div class="write">
 
-	<textarea v-model="message" @keydown.enter="send" placeholder="Write Your Message"></textarea>
+	<textarea v-model="message" @keydown.enter="send" placeholder="Your Message"></textarea>
 
 </div>
 
@@ -49,7 +49,7 @@ export default{
     margin: 10px;
     resize: none;
     border-radius: 3px;
-    border: 1px solid lightgray;
+    border: 1px solid white;
     padding: 6px;
 }
 </style>

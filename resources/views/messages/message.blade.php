@@ -9,11 +9,9 @@
 
 		<div class="card">
 
-			<div class="card-header"> BookPal Messenger</div>
 	
 				<chat-app :user="{{auth()->user()}}"></chat-app>
 
-			<div class="card-body"></div>
 
 		</div>
 		

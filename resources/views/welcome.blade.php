@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>BookPal</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -18,7 +18,12 @@
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
-                background-image: url('163655_solar-system-wallpaper.png');
+                min-height: 500px;
+                background-attachment: fixed;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-image: url('/storage/bckg/bulb-and-ballon-minimalist-wallpaper-copy.jpg');
             }
 
             .full-height {
@@ -65,6 +70,7 @@
         </style>
     </head>
     <body>
+        
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -81,7 +87,7 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
+                <div class="title m-b-md" style=" margin-bottom: 7rem">
                     BookPal
                 </div>
 

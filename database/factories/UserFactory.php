@@ -1,17 +1,7 @@
 <?php
 
-use Faker\Generator as Faker;
+use Faker\Generator;
 
-/*
-|--------------------------------------------------------------------------
-| Model Factories
-|--------------------------------------------------------------------------
-|
-| This directory should contain each of the model factory definitions for
-| your application. Factories provide a convenient way to generate new
-| model instances for testing / seeding your application's database.
-|
-*/
 
 $factory->define(App\User::class, function (Faker $faker) {
     return [
@@ -21,7 +11,7 @@ $factory->define(App\User::class, function (Faker $faker) {
         'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
         'remember_token' => str_random(10),
         'phone'=>$faker->phonenumber,
-        'profile_image'=>'http://via.placeholder.com/150x150',
+        'avatar_path'=>'http://via.placeholder.com/150x150',
     ];
 });
 
@@ -40,6 +30,7 @@ $factory->define(App\message::class, function (Faker $faker) {
        
     ];
 });
+
 
 
 $factory->define(App\Thread::class, function($faker) {
@@ -71,28 +62,73 @@ $factory->define(App\Books::class, function($faker) {
 				return factory('App\User')->create()->id;
 
 			},
+				'genre_id' => function(){
+
+				return factory('App\Genre')->create()->id;
+
+			},
 			'title' => $faker->sentence,
 			'body' => $faker->paragraph,
 			'author' => $faker->name,
 			'condition' => $faker->name,
-			'tumbnail'=>'http://via.placeholder.com/150x150'
+			'tumbnail_image'=>'http://via.placeholder.com/150x150'
 
 
 	];
 });
 
-$factory->define(App\Channel::class, function($faker) {
 
-	$name=$faker->word;
+
+
+
+$factory->define(App\Genre::class, function($faker) {
+
+	$faker = Faker\Factory::create('sk_SK');
+
+		$name=$faker->country;
+
+	$pop2 = App\Channel::where('name', '=', $name);
+
+	
+
+if ($pop2->exists()) {
+ 
+}else{
 
 	return[
-			'name'=>$name,
 
-			'slug'=>$name,
+	'name'=>$name,
 
+	'slug'=>$name,
+ ];
+};
 
+	
+});
 
-	];
+$factory->define(App\Channel::class, function($faker) {
+
+	$faker = Faker\Factory::create('sk_SK');
+
+	$name=$faker->streetSuffix;
+
+	$pop2 = App\Channel::where('name', '=', $name);
+
+	
+
+if ($pop2->exists()) {
+ 
+}else{
+
+	return[
+
+	'name'=>$name,
+
+	'slug'=>$name,
+ ];
+};
+
+	
 });
 
 $factory->define(App\Reply::class, function($faker) {

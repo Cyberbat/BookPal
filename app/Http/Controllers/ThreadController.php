@@ -20,9 +20,9 @@ if(request()->wantsJson()){
 //Filter by Channel
 if($channelSlug){
 $channelId= Channel::where('slug',$channelSlug)->first()->id;
-$threads = Thread::with('channel')->where('channel_id',$channelId)->latest()->get();
+$threads = Thread::with('channel')->where('channel_id',$channelId)->latest()->paginate(9);
 }else{
-$threads = Thread::with('channel')->latest()->get();
+$threads = Thread::with('channel')->latest()->paginate(9);
 }
 
 
@@ -30,7 +30,7 @@ $threads = Thread::with('channel')->latest()->get();
 if($username= request('by')){
 $user=\App\User::where('name',$username)->firstOrFail();
 $threads = Thread::with('channel')->where('user_id',$user->id);
-$threads=$threads->get();
+$threads=$threads->paginate(9);
 }
 
 
@@ -40,7 +40,7 @@ if($thread= request('popular')){
 Thread::getQuery()->orders=[];
 $threads = Thread::with('channel')->orderBy('replies_count','desc');
 
-$threads= $threads->get();
+$threads= $threads->paginate(9);
 }
 
 
@@ -107,9 +107,32 @@ public function edit(Thread $thread)
 * @param  \App\Thread  $thread
 * @return \Illuminate\Http\Response
 */
-public function update(Request $request, Thread $thread)
+public function update($channel, Thread $thread)
 {
-//
+
+
+    $this->validate(request(),[
+
+        'title'=>'required',
+        'body'=>'required',
+
+
+    ]);
+
+
+
+     Thread::where('id', $thread->id)->update([
+
+        'title'=> request('title'),
+        'body'=> request('body'),
+
+
+     ]);
+
+    return back()->with('flash','Updated');
+
+
+
 }
 /**
 * Remove the specified resource from storage.

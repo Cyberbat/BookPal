@@ -1,9 +1,12 @@
 <?php
 namespace App;
 use Illuminate\Database\Eloquent\Model;
+use App\Notifications\Threadwasupdated;
+use Laravel\Scout\Searchable;
 class Thread extends Model
 {
 
+use Searchable;
     use RecordsActivity;
 
 protected $guarded =[];
@@ -29,10 +32,23 @@ public function replies(){
 public function creator(){
         return $this->belongsTo(User::Class, 'user_id');
 }
+
 public function addReply($reply){
-$this->replies()->create($reply);
+
+$reply = $this->replies()->create($reply);
+
+
+$this->creator->notify(new Threadwasupdated($this, $reply));
+
+//Prepare Notification for the user of the thread
+
+return $reply;
 }
+
+
 public function channel(){
 return $this->belongsTo(Channel::class);
 }
+
+
 }

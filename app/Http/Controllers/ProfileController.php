@@ -11,7 +11,13 @@ class ProfileController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+
      */
+
+     public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         //
@@ -68,11 +74,42 @@ class ProfileController extends Controller
      * @param  \App\Profile  $profile
      * @return \Illuminate\Http\Response
      */
-    public function edit(Profile $profile)
+    public function editBio()
     {
-        //
-    }
 
+    $this->validate(request(),[
+
+            'userbio'=> ['required']
+        ]);
+
+        
+
+        auth()->user()->update([
+
+            $av ='bio' => request('userbio')
+        ]);
+
+        return back()->with('flash','Your Profile has be updated');
+
+            }
+     public function editquote()
+    {
+      $this->validate(request(),[
+
+            'userquote'=> ['required']
+        ]);
+
+        
+
+        auth()->user()->update([
+
+            $av ='quote' =>request('userquote')
+        ]);
+
+        return back()->with('flash','Your Profile has be updated');
+       ;
+
+            }
     /**
      * Update the specified resource in storage.
      *

@@ -2,7 +2,7 @@
     
     <div class="convo">
  	
- 		<h1>{{contact ? contact.name: 'Select a Contact'}}</h1>
+ 		<h1>{{contact ? contact.name: 'Select the contact you wish to exchange with'}}</h1>
 
  		<Message :contact="contact" :messages="messages"/>
  		<WriteMess @send="sendMessage"></WriteMess>
@@ -76,7 +76,7 @@
         font-size: 20px;
         padding: 10px;
         margin: 0;
-        border-bottom: 1px solid lightgray;
+        border-bottom: 1px solid white;
     }
 }
 </style>

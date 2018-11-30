@@ -2,6 +2,7 @@
 
 namespace App;
 
+
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -20,7 +21,7 @@ class User extends Authenticatable implements MessageableInterface
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'avatar_path','quote','bio'
     ];
 
     /**
@@ -48,5 +49,34 @@ class User extends Authenticatable implements MessageableInterface
 
         return $this->hasMany(Activity::class);
 
+    }
+
+    public function avatar(){
+
+        if(! $this->avatar_path){
+
+            return '/avatars/default.jpg';
+        }
+
+        return $this->avatar_path;
+    }
+        public function bio(){
+
+        if(! $this->bio){
+
+            return "Your Bio will appear here";
+        }
+
+        return $this->bio;
+    }
+
+      public function quote(){
+
+        if(! $this->quote){
+
+            return 'Your quote will appear here!';
+        }
+
+        return $this->quote;
     }
 }

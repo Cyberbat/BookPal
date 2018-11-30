@@ -2,10 +2,14 @@
 
 @slot('heading')
 
+
 <a href="{{$activity->subject->favorited->path()}}">
+          <p>Favorite:</p>
+
         <div class="row featurette" >
 
-      <div class="col-md-5">
+  
+      <div class="col-md-3">
           </div>
           <div class="col-md-5">
            <h2 class="text-muted"> {{$profileUser->name}} favorited a reply </h2>
@@ -21,7 +25,7 @@
 
 		     <div class="row featurette">
 
-      <div class="col-md-5">
+      <div class="col-md-2">
      </div>
           <div class="col-md-7">
 
@@ -29,6 +33,8 @@
           </div>
      
         </div>
+
+        <hr>
 
 
 </a>

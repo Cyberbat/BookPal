@@ -65,13 +65,13 @@
                 &.received {
                     text-align: left;
                     .text {
-                        background: brown;
+                        background: lightgreen;
                     }
                 }
                 &.sent {
                     text-align: right;
                     .text {
-                        background: green;
+                        background: lightblue;
                     }
                 }
             }

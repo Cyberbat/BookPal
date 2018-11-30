@@ -2,29 +2,51 @@
 
 @slot('heading')
 <a href="{{$activity->subject->thread->path()}}">
-  <hr class="featurette-divider">
+<p>Reply:</p>
+   
 
-        <div class="row featurette">
-          <div class="col-md-6">
-            <h2 class="featurette-heading text-muted">{{$profileUser->name}} replied to the <span class="text-muted"> {{$activity->subject->thread->title}}'s Book Blog</span></h2>
+     <div class="row featurette" >
+
+
+      <div class="col-md-2">
           </div>
-      </div>
+          <div class="col-md-7">
+           <h2 class="text-muted" style="padding-bottom: 3%"> {{$profileUser->name}} replied to 
+ <span class="text-muted">{{$activity->subject->thread->title}} Blog: </h2></span></h2>
 
+
+    </div>
+</div>
 @endslot
 
 @slot('body')
 
-        <div class="row featurette">
+         <div class="row featurette">
+
+      <div class="col-md-2">
+     </div>
           <div class="col-md-7">
-            <p class="lead text-muted">{{$activity->subject->body}}</p>
+
+             <p class="text-muted">{{$activity->subject->body}}</p>
           </div>
-          <div class="col-md-5">
-          </div>
+     
         </div>
 
         <hr class="featurette-divider">
         @endslot
     </a>
+
+
+        <div class="row featurette">
+
+      <div class="col-md-2">
+     </div>
+          <div class="col-md-7">
+
+             <p class="text-muted">{{$activity->subject->body}}</p>
+          </div>
+     
+        </div>
 
 @endcomponent
 
