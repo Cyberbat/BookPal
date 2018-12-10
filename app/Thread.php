@@ -7,7 +7,7 @@ class Thread extends Model
 {
 
 use Searchable;
-    use RecordsActivity;
+use RecordsActivity;
 
 protected $guarded =[];
 

@@ -21,10 +21,6 @@
                   <img  src="/storage/{{ $profileUser->avatar() }}"  style=" flex: 2; display: flex; align-items: center;width: 200px; height: 200px; border-radius: 50%; margin: 0 auto">
 
 
-
-  
-
-
                 <h1 style="color: grey">{{$profileUser->name}}</h1>
                 <p style="color: grey">{{$profileUser->bio()}}</p>
                <small style="color: grey"> Active Member since: {{$profileUser->created_at->format('d-m-Y')}}</small>

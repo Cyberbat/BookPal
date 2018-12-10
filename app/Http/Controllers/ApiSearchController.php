@@ -30,4 +30,24 @@ class ApiSearchController extends Controller
         return $error;
     }
 
+
+ public function customsearch(Request $request){
+
+    $request->validate([
+        'search'=>'required| min:3']);
+
+    $search1 = $request->input('search');
+
+    $book = Books::where('title', 'like', "%$search1%")->get();
+
+    $search2 = $request->input('search');
+
+    $blog = Thread::where('title', 'like', "%$search1%")->get();
+    
+    return view('search.results',[
+    'book'=>$book,
+    'blog'=>$blog,
+    ]);
+
+ }
 }

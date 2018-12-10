@@ -50,6 +50,7 @@
             <!-- Left Side Of Navbar -->
        
             <ul class="navbar-nav mr-auto">
+                  <a href="/crawler/data" id="navbarDropdown" class="nav-link" href="#" role="button" aria-haspopup="true" aria-expanded="false" v-pre> Popular Books of 2018</a>
             
             <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -63,8 +64,9 @@
  
                 </div>
             </li>
-            
-            
+
+           
+                   
         </ul>
    
  

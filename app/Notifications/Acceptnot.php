@@ -41,7 +41,7 @@ class Acceptnot extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['mail','database'];
     }
 
     /**
@@ -53,9 +53,10 @@ class Acceptnot extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->from('BookPal@hello.com')
+                    ->line('Your requests for '.$this->bookname. ' has been accepted')
+                    ->action('Notification Action', url('/login'))
+                    ->line('Thank you for using BookPal!');
     }
 
     /**

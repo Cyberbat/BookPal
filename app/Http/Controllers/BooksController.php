@@ -20,7 +20,7 @@ class BooksController extends Controller
             $book=Books::where('genre_id',$genreId)->latest()->paginate(10);
         }else{
 
-            $book=Books::latest()->paginate(10);
+            
         }
 
 
@@ -64,7 +64,7 @@ class BooksController extends Controller
         'title'=>request('title'),
         'condition'=>request('condition'),
         'body'=>request('body'),
-        'tumbnail_image' =>request()->file('thumbbook')->store('bookim', 'public'),
+           'tumbnail_image' =>request()->file('thumbbook')->store('bookim', 'public'),
            'bookimage1' =>request()->file('bookim1')->store('bookim', 'public'),
            'bookimage2' =>request()->file('bookim2')->store('bookim', 'public'),
            'bookimage3' =>request()->file('bookim3')->store('bookim', 'public')

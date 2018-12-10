@@ -11,7 +11,7 @@ class message extends Model
 {
     protected $guarded =[];
 
-    use Searchable;
+
     public function fromContact(){
 
     	return $this->hasOne(User::class, 'id', 'from'); 

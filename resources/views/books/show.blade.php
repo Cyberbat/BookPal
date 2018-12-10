@@ -22,7 +22,6 @@
           <div class="row">
             <div class="col-sm-8 col-md-7 py-3">
               <h4 class="text-white">About</h4>
-              <p class="text-white">BookPal is a Book Exchange Platform with the intent of bringing people closer using books as a medium</p>
               <p class="text-white">Feel Free to Browse through the books and drop a message to the owner</p>
             </div>
             <div class="col-sm-4 offset-md-1 py-4">

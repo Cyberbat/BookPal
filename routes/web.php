@@ -129,3 +129,5 @@ Route::get('/search', [
     'as' => 'api.search',
     'uses' => 'ApiSearchController@search'
 ]);
+
+Route::get('/customsearch', 'ApiSearchController@customsearch');

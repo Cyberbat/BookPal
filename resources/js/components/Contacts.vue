@@ -3,7 +3,7 @@
     <div class="contacts">
  
  	<ul>
- 		<li v-for="contact in sortedContacts" :key="contact.id" @click="selectContact( contact)" :class="{'selected': contact==selected}">
+ 		<li v-for="contact in sortedContacts" :key="contact.id" @click="selectContact(contact)" :class="{'selected': contact==selected}">
  			
 			<div class="profimage">
 
@@ -15,7 +15,7 @@
 
 			<div class="contact">
 			<p class="name">{{contact.name}} </p>
-            <span class="unread" v-if="contact.unread">{{contact.unread }}</span>
+            <span class="unread" v-if="contact.unread">{{contact.unread}}</span>
 
 			</div>
 
@@ -25,7 +25,7 @@
 
     
     </div>
-
+    
 
 </template>
 

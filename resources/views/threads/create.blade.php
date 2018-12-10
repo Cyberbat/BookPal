@@ -18,11 +18,11 @@
 
                         <select name="channel_id" id="channel_id" class="form-control" required>
 
-                             <option >Choose a Category...</option>}
+                             <option >Choose a Category...</option>
                             
                             @foreach(App\Channel::all() as $channel)
 
-                            <option value="{{$channel->id}}">{{$channel->name}}</option>}
+                            <option value="{{$channel->id}}">{{$channel->name}}</option>
                             
 
                             @endforeach

@@ -22,7 +22,8 @@ class ContactsController extends Controller
 
         //get all the users expet the auth one
 
-    	$contacts =User::where('id','!=',auth()->id())->get();
+    	$contacts = User::where('id','!=',auth()->id())->get();
+
 
         //have the user id 
 

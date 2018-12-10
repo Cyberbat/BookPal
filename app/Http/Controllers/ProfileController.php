@@ -77,7 +77,7 @@ class ProfileController extends Controller
     public function editBio()
     {
 
-    $this->validate(request(),[
+       $this->validate(request(),[
 
             'userbio'=> ['required']
         ]);
@@ -99,7 +99,6 @@ class ProfileController extends Controller
             'userquote'=> ['required']
         ]);
 
-        
 
         auth()->user()->update([
 
