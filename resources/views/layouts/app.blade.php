@@ -58,7 +58,7 @@ autocomplete('#aa-search-input',
     <flash message="{{ session('flash') }}"></flash>
     </div>
 </body>
-
+ 
    <footer class="text-muted">
       <div class="container">
         <p class="float-right">

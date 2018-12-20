@@ -5,11 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Upload your Literary Book</div>
+                <div class="card-header">Upload your Educational Book</div>
 
                 <div class="panel-body">
             
-                <form method="POST" action="/books" enctype="multipart/form-data">
+                <form method="POST" action="/edubooks" enctype="multipart/form-data">
 
                     {{csrf_field()}}
 
@@ -20,7 +20,7 @@
 
                              <option >Choose a Genre...</option>}
                             
-                            @foreach(App\Genre::all() as $genre)
+                            @foreach(App\edugenre::all() as $genre)
 
                             <option value="{{$genre->id}}">{{$genre->name}}</option>
                             
@@ -44,7 +44,7 @@
                         <label for="title">Condition:</label>
 
                           <select type="text" class="form-control" id="condition" name ="condition" placeholder="condition" required>
-                          <option value="Excellent">Excellent</option>
+                            <option value="Excellent">Excellent</option>
                             <option value="New">Good</option>
                             <option value="Slighlty Damaged">Slighlty Damaged</option>
                             <option value="Out of Shape">Out of Shape</option>

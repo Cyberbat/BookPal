@@ -29,25 +29,23 @@
                         <a class="dropdown-item"  href="/threads?by={{auth()->user()->name}}">{{auth()->user()->name}} 's Blog </a>
                         @endif
                         <a class="dropdown-item" href="/threads/?popular=1"> Popular Blog </a>
+
+                             @foreach (App\Channel::all() as $channel)
+                    <a class="dropdown-item" href="/threads/{{$channel->slug}}">{{$channel->name}}</a>
+                    @endforeach
+ 
                     </ul>
                         
                     </ul>
                 </li>
-                
-            
-            <li class="nav-item dropdown">
-                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                    Blog Categories   <span class="caret"></span>
-                </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+   
+                   
+            <li>
+                <a id="navbarDropdown" class="nav-link" href="/maps" role="button" aria-haspopup="true" aria-expanded="false" v-pre>
+                    Book Shelter </a>
+               
 
-                    @foreach (App\Channel::all() as $channel)
-                    <a class="dropdown-item" href="/threads/{{$channel->slug}}">{{$channel->name}}</a>
-                    @endforeach
- 
-                </div>
             </li>
-            
             
         </ul>
         <!-- Right Side Of Navbar -->

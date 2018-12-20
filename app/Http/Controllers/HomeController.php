@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Books;
+use App\EduBooks;
 
 class HomeController extends Controller
 {
@@ -24,7 +25,19 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // $book=Books::latest()->paginate(10);
+        return view('home');
+    }   
+
+    public function litindex()
+    {
         $book=Books::latest()->paginate(10);
-        return view('home',compact('book'));
+        return view('lit.home',compact('book'));
+    }
+
+      public function eduhome()
+    {
+        $book=EduBooks::latest()->paginate(10);
+        return view('eduhome.home',compact('book'));
     }
 }

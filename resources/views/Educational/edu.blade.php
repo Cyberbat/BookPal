@@ -13,24 +13,6 @@
             
   <body>
 
-
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img class="first-slide" src="/storage/bckg/hello12.jpg" alt="First slide">
-      <div class="container">
-              <div class="carousel-caption">
-                <h1>Welcome to BookPal</h1>
-                <p>Below you'll find both section of books types</p>
-                <small>Photo : Library of Alexandria</small>
-                <div>
-                   <a href="/books/create"><button class=" btn btn-primary" type="submit" > Post new Literary Book</button></a>
-                   <a href="/edubooks/create"><button class=" btn btn-primary" type="submit" > Post new Educational Book</button></a>
-                </div>
-              </div>
-            </div>
-          </div>
          
     
 
@@ -45,14 +27,26 @@
               <p class="text-white">Feel Free to Browse through the books and drop a message to the owner</p>
             </div>
             <div class="col-sm-4 offset-md-1 py-4">
-              <h4 class="text-white">Popular Books of 2018</h4>
+              <h4 class="text-white">Filter the Books through genres</h4>
 
         
             <!-- Left Side Of Navbar -->
        
             <ul class="navbar-nav mr-auto">
                   <a href="/crawler/data" id="navbarDropdown" class="nav-link" href="#" role="button" aria-haspopup="true" aria-expanded="false" v-pre> Popular Books of 2018</a>
-           
+            
+            <li class="nav-item dropdown">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    Book Genres   <span class="caret"></span>
+                </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                  @foreach (App\Genre::all() as $genre)
+                    <a class="dropdown-item" href="/books/{{$genre->slug}}">{{$genre->name}}</a>
+                    @endforeach
+ 
+                </div>
+            </li>
 
            
                    
@@ -83,33 +77,111 @@
       </div>
     </header>
 
-   
+    <body>
+
+
+             <div class="container" style="margin-bottom: -100px">
+          <div class="navbar-header">
+            <button type="button" class="btn" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-controls="navbar s" style="background-color: #f8fafc"> 
+          <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             width="30px" height="30px" viewBox="0 0 612 612" style="enable-background:new 0 0 612 612;" xml:space="preserve">
+          <g>
+            <g id="Search">
+              <g>
+                <path d="M382.5,0C255.759,0,153,102.759,153,229.5c0,53.034,18.149,101.707,48.367,140.568L8.415,563.021
+                  C2.812,568.625,0,575.949,0,583.312c0,7.344,2.812,14.688,8.415,20.292C14,609.208,21.343,612,28.688,612
+                  s14.688-2.792,20.272-8.396l192.971-192.972C280.793,440.851,329.467,459,382.5,459C509.241,459,612,356.241,612,229.5
+                  S509.241,0,382.5,0z M382.5,401.625c-94.917,0-172.125-77.208-172.125-172.125c0-94.917,77.208-172.125,172.125-172.125
+                  c94.917,0,172.125,77.208,172.125,172.125C554.625,324.417,477.417,401.625,382.5,401.625z"/>
+              </g>
+            </g>
+
+          </svg>
+
+            </button>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse"  >
+
+            <ul class="nav navbar-nav">
+
+             
+  <ais-index
+    app-id="BFBHHRFHJ5"
+    api-key="28035e0d1044cc3b6fa5144553a0f22a"
+    index-name="books"
+  >
+    <ais-search-box style="margin-top: 30px" class="search"></ais-search-box>
+
+    <ais-stats></ais-stats>
+
+
+
+    <ais-results>
+      <template slot-scope="{ result }">
+        <h2>
+             <h2>
+      <a :href="'/books/'+result.genre_id+'/'+result.id">
+        @{{ result.title }}
+      </a>
+    </h2>
+        </h2>
+      </template>
+    </ais-results>
+      <hr>
+
+    Filter By Author:
+
+    <ais-refinement-list attribute-name="author"></ais-refinement-list>
+    <hr>
+        Filter By Condition:
+    <ais-refinement-list attribute-name="condition"></ais-refinement-list>
+
+
+{{-- <ais-pagination></ais-pagination>
+ --}}  </ais-index>
+            </ul>
+          
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+
+
+
+
+ </div>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+          <div class="row">
+             @foreach($book as $it)
+            <div class="col-md-4">
+
+              <a href="{{$it->path()}}">
+              <div class="card mb-4 shadow-sm">
+                <img src="/storage/{{ $it->tumbnail_image }}" alt= {{$it->tumbnail}}; height= 300px>
+                <div class="card-body">
+                  <p class="card-text">{{$it->title}}.</p>
+
+                  <p> Uploaded by {{$it->owner->name}}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                
+                    <small class="text-muted">{{$it->created_at->diffForHumans()}}</small>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+                @endforeach
+        </div>
+       {{$book->links()}}
+     
+
+</div>
+</div>
+</div>
     </main>
 
-<body>
-
-  <a href="/lithome">
-      <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-      
-      <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-        <div class="my-3 py-3">
-          <h2 class="display-5">Literary Books</h2>
-          <p class="lead">Feed your Literary Cravings</p>
-        </div>
-        <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"><img src="/storage/bckg/915750.jpg" width="550px" height="350px" style="margin-left: -9%"></div>
-      </div>
-    </a>
-    <a href="/eduhome">
-      <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-        
-        <div class="my-3 p-3 text-muted">
-          <h2 class="display-5">Educational Books</h2>
-          <p class="lead">Save Money and check the books out</p>
-        </div>
-        <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"><img src="/storage/bckg/327871-books-library-bokeh-depth_of_field-748x534.jpg" width="550px" height="550px"  style="margin-left: -10%"></div>
-      </div>
-    </div>
-  </a>
   
 
     <!-- Bootstrap core JavaScript

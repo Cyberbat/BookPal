@@ -2,29 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Books;
-use App\Genre;
+use App\EduBooks;
 use Illuminate\Http\Request;
+use App\edugenre;;
 
-class BooksController extends Controller
+class EduBooksController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index($genresulg= null)
+     public function index($genresulg= null)
     {
         if($genresulg){
-            $genreId= Genre::where('slug',$genresulg)->first()->id;
-            $book=Books::where('genre_id',$genreId)->latest()->paginate(10);
+            $genreId= edugenre::where('slug',$genresulg)->first()->id;
+            $book=EduBooks::where('edugenre_id',$genreId)->latest()->paginate(10);
         }else{
 
             
         }
 
 
-        return view('lit.home',compact('book'));
+        return view('eduhome.home',compact('book'));
     }
 
     /**
@@ -34,7 +29,7 @@ class BooksController extends Controller
      */
     public function create()
     {
-        return view('books.createBook');
+        return view('Educational.createedu');
     }
 
     /**
@@ -57,9 +52,9 @@ class BooksController extends Controller
         'bookim3'=> ['required','image']
         ]);
 
-        $book= Books::create([
+        $book= EduBooks::create([
         'user_id'=>auth()->id(),
-        'genre_id'=> request('genre_id'),
+        'edugenre_id'=> request('genre_id'),
         'author'=> request('author'),
         'title'=>request('title'),
         'condition'=>request('condition'),
@@ -78,10 +73,10 @@ class BooksController extends Controller
      * @param  \App\Books  $books
      * @return \Illuminate\Http\Response
      */
-    public function show($genreId, Books $books)
+    public function show($genreId, EduBooks $books)
     {
 
-        return view('books.show',compact('books'));
+        return view('Educational.showedu',compact('books'));
 
             }
 
@@ -94,7 +89,7 @@ class BooksController extends Controller
      * @param  \App\Books  $books
      * @return \Illuminate\Http\Response
      */
-    public function edit(Books $books)
+    public function edit(EduBooks $books)
     {
         //
     }
@@ -106,7 +101,7 @@ class BooksController extends Controller
      * @param  \App\Books  $books
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Books $books)
+    public function update(Request $request, EduBooks $books)
     {
         //
     }
@@ -117,7 +112,7 @@ class BooksController extends Controller
      * @param  \App\Books  $books
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Books $books)
+    public function destroy(EduBooks $books)
     {
 
 

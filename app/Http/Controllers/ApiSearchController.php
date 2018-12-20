@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 use App\Books;
 use App\Thread;
+use App\User;
+use App\EduBooks;
 
 class ApiSearchController extends Controller
 {
@@ -40,13 +42,24 @@ class ApiSearchController extends Controller
 
     $book = Books::where('title', 'like', "%$search1%")->get();
 
+
     $search2 = $request->input('search');
 
     $blog = Thread::where('title', 'like', "%$search1%")->get();
+
+    $search3 = $request->input('search');
+
+    $profile = User::where('name', 'like', "%$search1%")->get();
+
+    $search3 = $request->input('search');
+
+    $edubooks = edubooks::where('title', 'like', "%$search1%")->get();
     
     return view('search.results',[
     'book'=>$book,
     'blog'=>$blog,
+    'profile'=>$profile,
+    'edubooks'=>$edubooks
     ]);
 
  }

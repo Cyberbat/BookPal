@@ -19,6 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/lithome', 'HomeController@litindex')->name('home');
+
+Route::get('/eduhome', 'HomeController@eduhome');
+
 
 //Threads
 
@@ -54,8 +58,17 @@ Route::delete('/books/{books}', 'BooksController@destroy');
 
 Route::get('/books/{genre}', 'BooksController@index');
 
+//EduBooks
+Route::get('/edubooks/{genre}/{books}', 'EduBooksController@show');
+Route::get('/edubooks/create', 'EduBooksController@create');
+Route::post('/edubooks', 'EduBooksController@store');
+Route::delete('/edubooks/{books}', 'EduBooksController@destroy');
+
+Route::get('/edubooks/{genre}', 'EduBooksController@index');
+
 //Add book Images
 Route::post('api/books/{book}/bookimage', 'Api\ImageBooksController@store');
+Route::post('api/edubooks/{book}/bookimage', 'Api\ImageBooksController@storeedu');
 
 //Update the User Bio
 Route::post('/user/bio', 'ProfileController@editBio');
@@ -86,6 +99,11 @@ Route::get('profile/{user}/notifications', 'UserNotificationController@index');
 Route::post('profile/notifications/{bookowner}/{user}/{booksid}', 'UserNotificationController@bookreq');
 
 Route::get('/acceptnot/{book}/{user}', 'UserNotificationController@returnconfim');
+
+//For the Books
+
+
+Route::post('profile/edunotifications/{bookowner}/{user}/{booksid}', 'UserNotificationController@edurecom');
 
 
 //Crawler
