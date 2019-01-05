@@ -24,7 +24,7 @@
 <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
 
 <script>
-var client = algoliasearch('BFBHHRFHJ5', '28035e0d1044cc3b6fa5144553a0f22a');
+var client = algoliasearch('', '');
 var index = client.initIndex('books');
 //initialize autocomplete on search input (ID selector must match)
 autocomplete('#aa-search-input',
