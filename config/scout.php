@@ -84,8 +84,8 @@ return [
     */
 
     'algolia' => [
-        'id' => 'BFBHHRFHJ5',
-        'secret' => '870df8d9f2c0f5715b0e8cbfb47dee72'
+        'id' => '',
+        'secret' => ''
     ],
 
 ];
